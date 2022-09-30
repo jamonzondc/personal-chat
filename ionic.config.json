@@ -1,0 +1,8 @@
+{
+  "name": "personalChat",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular",
+  "id": "d2730d00"
+}
