@@ -1,0 +1,42 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>chat</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row *ngFor="let chat of list">
+      <ion-col>
+        <bubble [data]="chat"></bubble>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <div></div>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-grid>
+      <ion-row class="ion-align-items-center">
+        <ion-col size="10">
+          <ion-item lines="none">
+            <ion-textarea
+              auto-grow
+              placeholder="Enter any notes here..."
+            ></ion-textarea>
+          </ion-item>
+        </ion-col>
+        <ion-col size="2">
+          <ion-button fill="clear">
+            <ion-icon slot="icon-only" name="send-sharp"></ion-icon>
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-toolbar>
+</ion-footer>

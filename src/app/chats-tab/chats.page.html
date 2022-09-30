@@ -1,0 +1,47 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="secondary">
+      <ion-button (click)="enabledEdit=!enabledEdit">
+        <p *ngIf="!enabledEdit">Edit</p>
+        <p *ngIf="enabledEdit">OK</p>
+      </ion-button>
+    </ion-buttons>
+    <ion-buttons slot="primary" *ngIf="!enabledEdit">
+      <ion-icon name="create-outline"></ion-icon>
+    </ion-buttons>
+    <ion-title>Chats</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-list>
+    <ion-item *ngFor="let item of chatList" (click)="goToChat()">
+      <ion-checkbox
+        slot="start"
+        [indeterminate]="true"
+        *ngIf="enabledEdit"
+      ></ion-checkbox>
+      <ion-avatar slot="start">
+        <img alt="{{item?.username}}" src="{{item?.image}}" />
+      </ion-avatar>
+      <ion-label>
+        <h3>{{item?.username}}</h3>
+        <p>{{item?.secondLine}}</p>
+      </ion-label>
+      <ion-label slot="end">
+        <ion-grid>
+          <ion-row class="ion-justify-content-center">
+            <ion-col size="auto">{{item?.dateTime | time}}</ion-col>
+          </ion-row>
+          <ion-row class="ion-justify-content-center">
+            <ion-col size="auto">
+              <ion-item lines="none">
+                <ion-badge>{{item?.messageToRead}}</ion-badge>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>
