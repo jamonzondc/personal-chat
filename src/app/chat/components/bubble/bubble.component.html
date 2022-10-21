@@ -1,1 +1,43 @@
-<div></div>
+<ion-row
+  [class]="
+    message?.isMessageSent
+      ? 'ion-justify-content-end'
+      : 'ion-justify-content-start'
+  "
+>
+  <ion-col size="auto">
+    <div
+      [class]="
+        message?.isMessageSent
+          ? 'bubble emitter-bubble-color'
+          : 'bubble received-bubble-color'
+      "
+    >
+      <ion-row>
+        <ion-col>
+          {{ message?.text }}
+        </ion-col>
+      </ion-row>
+      <ion-row class="ion-justify-content-end">
+        <ion-col size="auto">
+          {{ message?.time }}
+        </ion-col>
+        <ion-col size="auto" *ngIf="message?.isMessageSent">
+          <ion-icon
+            name="checkmark-sharp"
+            *ngIf="message?.status === 0"
+          ></ion-icon>
+          <ion-icon
+            name="checkmark-done-sharp"
+            *ngIf="message?.status === 1"
+          ></ion-icon>
+          <ion-icon
+            color="warning"
+            name="checkmark-done-sharp"
+            *ngIf="message?.status === 2"
+          ></ion-icon>
+        </ion-col>
+      </ion-row>
+    </div>
+  </ion-col>
+</ion-row>

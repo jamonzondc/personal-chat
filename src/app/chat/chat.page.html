@@ -9,34 +9,32 @@
 
 <ion-content>
   <ion-grid>
-    <ion-row *ngFor="let chat of list">
-      <ion-col>
-        <bubble [data]="chat"></bubble>
-      </ion-col>
-    </ion-row>
+    <ng-container *ngFor="let message of messageList">
+      <bubble [message]="message"></bubble>
+    </ng-container>
   </ion-grid>
-
-  <div></div>
 </ion-content>
-
 <ion-footer>
   <ion-toolbar>
-    <ion-grid>
-      <ion-row class="ion-align-items-center">
-        <ion-col size="10">
-          <ion-item lines="none">
-            <ion-textarea
-              auto-grow
-              placeholder="Enter any notes here..."
-            ></ion-textarea>
-          </ion-item>
-        </ion-col>
-        <ion-col size="2">
-          <ion-button fill="clear">
-            <ion-icon slot="icon-only" name="send-sharp"></ion-icon>
-          </ion-button>
-        </ion-col>
-      </ion-row>
-    </ion-grid>
+    <form [formGroup]="formGroup">
+      <ion-grid>
+        <ion-row class="ion-align-items-center">
+          <ion-col size="10">
+            <ion-item lines="none">
+              <ion-textarea
+                auto-grow
+                placeholder="Enter any notes here..."
+                formControlName="message"
+              ></ion-textarea>
+            </ion-item>
+          </ion-col>
+          <ion-col size="2">
+            <ion-button fill="clear" (click)="sendMessage()">
+              <ion-icon slot="icon-only" name="send-sharp"></ion-icon>
+            </ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </form>
   </ion-toolbar>
 </ion-footer>
